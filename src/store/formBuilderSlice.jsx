@@ -22,6 +22,23 @@ export const formBuilderSlice = createSlice({
       };
       state.currentForm.fields.push(newField);
     },
+    addResponse: (state, action) => {
+      const { formId, response } = action.payload;
+      const formIndex = state.forms.findIndex(form => form.id === formId);
+      if (formIndex !== -1) {
+        const updatedResponses = [...state.forms[formIndex].responses, response];
+        state.forms[formIndex] = {
+          ...state.forms[formIndex],
+          responses: updatedResponses
+        };
+        if (state.currentForm.id === formId) {
+          state.currentForm = {
+            ...state.currentForm,
+            responses: updatedResponses
+          };
+        }
+      }
+    },
     removeField: (state, action) => {
       state.currentForm.fields = state.currentForm.fields.filter(
         field => field.id !== action.payload
@@ -56,7 +73,7 @@ export const formBuilderSlice = createSlice({
     saveForm: (state) => {
       const formIndex = state.forms.findIndex(form => form.id === state.currentForm.id);
       if (formIndex !== -1) {
-        state.forms[formIndex] = { ...state.currentForm };
+        state.forms[formIndex] = { ...state.currentForm }; // Include responses
       } else {
         state.forms.push({ ...state.currentForm });
       }
@@ -88,7 +105,8 @@ export const {
   saveForm,
   createNewForm,
   loadForm,
-  updateFormName
+  updateFormName,
+  addResponse // Export new action
 } = formBuilderSlice.actions;
 
 export default formBuilderSlice.reducer;
