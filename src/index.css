@@ -31,3 +31,36 @@ body {
     @apply font-sans antialiased;
   }
 }
+
+/* Ensure both containers have the same height */
+/* Custom Scrollbar Styling */
+.custom-scrollbar {
+  /* Ensure the container is scrollable */
+  overflow-y: auto;
+}
+
+/* WebKit (Chrome, Edge, Safari) Scrollbar Styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid #f1f1f1; /* Adds a border around the thumb for better contrast */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555555; /* Darker color on hover for better interactivity */
+}
+
+/* Firefox Scrollbar Styling */
+.custom-scrollbar {
+  scrollbar-width:thin; /* Makes the scrollbar thinner */
+  scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
+}
