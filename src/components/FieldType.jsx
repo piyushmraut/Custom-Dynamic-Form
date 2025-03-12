@@ -19,7 +19,7 @@ const FieldType = ({ onAddField }) => {
       {fieldTypes.map((field) => (
         <button
           key={field.type}
-          className="w-full flex items-center p-3 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full flex items-center p-3 bg-blue-50 border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           onClick={() => onAddField(field.type)}
         >
           <span className="mr-2">{field.icon}</span>

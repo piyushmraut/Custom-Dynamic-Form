@@ -59,6 +59,18 @@ export const formBuilderSlice = createSlice({
         };
       }
     },
+    deleteForm: (state, action) => {
+      const formId = action.payload;
+      state.forms = state.forms.filter(form => form.id !== formId);
+      if (state.currentForm.id === formId) {
+        state.currentForm = {
+          id: 'default',
+          name: 'New Form',
+          fields: [],
+          responses: []
+        };
+      }
+    },
     reorderFields: (state, action) => {
       const { sourceIndex, destinationIndex } = action.payload;
       const [removed] = state.currentForm.fields.splice(sourceIndex, 1);
@@ -105,6 +117,7 @@ export const {
   saveForm,
   createNewForm,
   loadForm,
+  deleteForm,
   updateFormName,
   addResponse // Export new action
 } = formBuilderSlice.actions;

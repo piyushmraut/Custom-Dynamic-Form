@@ -25,3 +25,9 @@ body {
 .btn-danger {
   @apply text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
 }
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
